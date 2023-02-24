@@ -8,12 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var timeRemaining = 25
+    
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Text("\(timeRemaining)")
+                .font(.title)
+                .onReceive(timer) { _ in
+                    if timeRemaining > 0 {
+                        timeRemaining -= 1
+                    }
+                }
+            Button("Quit") {
+                NSApplication.shared.terminate(nil)
+            }
         }
         .padding()
     }

@@ -6,28 +6,44 @@
 //
 
 import Foundation
+import AVFoundation
 
 final class TimerModel: ObservableObject {
     
-    @Published var isActive = false
+    enum TimerState {
+        case active, paused, reseted
+    }
+    @Published var state: TimerState = .reseted
     @Published var isPaused = false
     @Published var ring = false
     @Published var timerString = "25:00"
-    @Published var minutesRemaining = 25.0 {
+    @Published var minutesRemaining = 1.0 {
         didSet {
             self.timerString = "\(Int(minutesRemaining)):00"
         }
     }
     
-    private var initialTime = 25
+    private var initialTime = 1
     private var endDate = Date()
+    private var audioPlayer: AVAudioPlayer? = nil
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
+    var buttonTitle: String {
+        switch state {
+        case .active:
+            return "Pause"
+        case .paused:
+            return "Resume"
+        case .reseted:
+            return "Start"
+        }
+    }
     
     func start() {
         self.initialTime = Int(minutesRemaining)
         self.endDate = Date()
-        self.isActive = true
+        self.state = .active
         self.endDate = Calendar.current.date(byAdding: .minute, value: Int(minutesRemaining), to: endDate)!
     }
     
@@ -39,20 +55,20 @@ final class TimerModel: ObservableObject {
     
     func reset() {
         self.minutesRemaining = Double(initialTime)
-        self.isActive = false
+        self.state = .reseted
         self.timerString = "\(Int(minutesRemaining)):00"
     }
     
     func update(){
-        guard isActive else { return }
+        guard state == .active else { return }
         
         let now = Date()
         let diff = endDate.timeIntervalSince1970 - now.timeIntervalSince1970
         
         if diff <= 0 {
-            self.isActive = false
+            self.state = .reseted
             self.timerString = "0:00"
-            self.ring = true
+            playSound()
             return
         }
         
@@ -62,6 +78,20 @@ final class TimerModel: ObservableObject {
         let seconds = calendar.component(.second, from: date)
         
         self.minutesRemaining = Double(minutes)
-        self.timerString = String(format:"%d:%02d", minutes, seconds)
+        self.timerString = String(format:"%02d:%02d", minutes, seconds)
+    }
+    
+    func playSound() {
+        guard let audioFile = Bundle.main.path(forResource: "BoxingBell", ofType: "mp3") else { return }
+        
+        do {
+            let soundPlayer: AVAudioPlayer? = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioFile))
+            guard let player = soundPlayer else { return }
+            
+            player.play()
+            
+        } catch let error {
+            print("Cannot play sound. \(error)")
+        }
     }
 }

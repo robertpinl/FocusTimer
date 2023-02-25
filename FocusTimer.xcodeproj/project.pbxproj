@@ -12,6 +12,9 @@
 		220127F029A9740300467339 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 220127EF29A9740300467339 /* Assets.xcassets */; };
 		220127F329A9740300467339 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 220127F229A9740300467339 /* Preview Assets.xcassets */; };
 		220127FB29A9788600467339 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220127FA29A9788600467339 /* TimerModel.swift */; };
+		22F96F2829A99AF1006B7C05 /* StartStopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F96F2729A99AF1006B7C05 /* StartStopButton.swift */; };
+		22F96F2A29A9A36F006B7C05 /* BoxingBell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 22F96F2929A9A36F006B7C05 /* BoxingBell.mp3 */; };
+		22F96F2C29A9AA69006B7C05 /* TimerAxisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F96F2B29A9AA69006B7C05 /* TimerAxisView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		220127F229A9740300467339 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		220127F429A9740300467339 /* FocusTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FocusTimer.entitlements; sourceTree = "<group>"; };
 		220127FA29A9788600467339 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
+		22F96F2729A99AF1006B7C05 /* StartStopButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStopButton.swift; sourceTree = "<group>"; };
+		22F96F2929A9A36F006B7C05 /* BoxingBell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BoxingBell.mp3; sourceTree = "<group>"; };
+		22F96F2B29A9AA69006B7C05 /* TimerAxisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerAxisView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,8 +63,11 @@
 				220127EB29A9740200467339 /* FocusTimerApp.swift */,
 				220127ED29A9740200467339 /* TimerView.swift */,
 				220127FA29A9788600467339 /* TimerModel.swift */,
+				22F96F2729A99AF1006B7C05 /* StartStopButton.swift */,
+				22F96F2B29A9AA69006B7C05 /* TimerAxisView.swift */,
 				220127EF29A9740300467339 /* Assets.xcassets */,
 				220127F429A9740300467339 /* FocusTimer.entitlements */,
+				22F96F2929A9A36F006B7C05 /* BoxingBell.mp3 */,
 				220127F129A9740300467339 /* Preview Content */,
 			);
 			path = FocusTimer;
@@ -130,6 +139,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22F96F2A29A9A36F006B7C05 /* BoxingBell.mp3 in Resources */,
 				220127F329A9740300467339 /* Preview Assets.xcassets in Resources */,
 				220127F029A9740300467339 /* Assets.xcassets in Resources */,
 			);
@@ -142,6 +152,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22F96F2829A99AF1006B7C05 /* StartStopButton.swift in Sources */,
+				22F96F2C29A9AA69006B7C05 /* TimerAxisView.swift in Sources */,
 				220127FB29A9788600467339 /* TimerModel.swift in Sources */,
 				220127EE29A9740200467339 /* TimerView.swift in Sources */,
 				220127EC29A9740200467339 /* FocusTimerApp.swift in Sources */,
@@ -278,6 +290,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FocusTimer/Info.plist;
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -306,6 +319,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FocusTimer/Info.plist;
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (

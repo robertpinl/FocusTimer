@@ -14,24 +14,22 @@ struct TimerView: View {
     var body: some View {
         VStack {
             Text(model.timerString)
-                .font(.title)
+                .font(.system(size: 60, weight: .light, design: .rounded))
                 .monospacedDigit()
-                .onTapGesture {
-                    model.start(min: 25)
-                }
-            
             
             HStack {
-                Button("Start") {
+                Button(model.buttonTitle) {
                     model.start()
+//                    model.playSound()
                 }
+                .buttonStyle(StartStopButton())
             }
             
             Button("Quit") {
                 NSApplication.shared.terminate(nil)
             }
         }
-        .frame(width: 400, height: 200)
+//        .frame(width: 400, height: 200)
         .onReceive(model.timer) { _ in
             model.update()
         }
@@ -43,12 +41,3 @@ struct TimerView_Previews: PreviewProvider {
         TimerView()
     }
 }
-
-//struct CustomButton: PrimitiveButtonStyle {
-//    func makeBody(configuration: Configuration) -> some View {
-//        configuration.label
-//            .padding()
-//            .background(RoundedRectangle(cornerRadius: 10).fill(color))
-//            .onTapGesture { configuration.trigger() }
-//    }
-//}

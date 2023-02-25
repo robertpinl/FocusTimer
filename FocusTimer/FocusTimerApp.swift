@@ -10,8 +10,8 @@ import SwiftUI
 @main
 struct FocusTimerApp: App {
     var body: some Scene {
-        MenuBarExtra("FocusTimer", systemImage: "timer") {
-            ContentView()
+        MenuBarExtra("FocusTimer", image: "icon") {
+            TimerView()
         }.menuBarExtraStyle(.window)
     }
 }

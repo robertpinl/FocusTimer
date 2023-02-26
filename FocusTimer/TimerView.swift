@@ -35,20 +35,26 @@ struct TimerView: View {
                     model.start()
 //                    model.playSound()
                 }
-                .buttonStyle(StartStopButton())
+//                .buttonStyle(StartStopButton())
+                Button("Reset") {
+                    model.reset()
+                }
             }
             
-            Button("Reset") {
-                model.reset()
-            }
-            
-            Button("Quit") {
-                NSApplication.shared.terminate(nil)
+            ZStack(alignment: .bottom) {
+                Text("Focus Timer")
+                    .font(.system(.caption, design: .rounded))
+                    .foregroundColor(.secondary)
+                HStack {
+                    Spacer()
+                    Button("Quit") {
+                        NSApplication.shared.terminate(nil)
+                    }
+                }
             }
         }
 //        .frame(width: 350, height: 200)
-        .padding(30)
-        .padding(.horizontal)
+        .padding()
         .onReceive(model.timer) { _ in
             model.update()
         }

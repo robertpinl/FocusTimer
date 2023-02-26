@@ -23,7 +23,7 @@ final class TimerModel: ObservableObject {
         }
     }
     
-    private var initialTime = 1
+    private var initialTime = 25
     private var endDate = Date()
     private var audioPlayer: AVAudioPlayer? = nil
     

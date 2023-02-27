@@ -5,27 +5,27 @@
 //  Created by Robert P on 25.02.2023.
 //
 
-import Foundation
-import AVFoundation
+import SwiftUI
 
 final class TimerModel: ObservableObject {
     
     enum TimerState {
         case active, paused, reseted
     }
+        
     @Published var state: TimerState = .reseted
-//    @Published var isPaused = false
     @Published var ring = false
     @Published var timerString = "25:00"
     @Published var minutesRemaining = 25.0 {
         didSet {
-            self.timerString = "\(Int(minutesRemaining)):00"
+            timerString = minutesRemaining > 5 ? "\(Int(minutesRemaining)):00" : "0\(Int(minutesRemaining)):00"
         }
     }
     
+    private let audioPlayer = AudioPlayer()
+    
     private var initialTime = 25
     private var endDate = Date()
-    private var audioPlayer: AVAudioPlayer? = nil
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -48,6 +48,7 @@ final class TimerModel: ObservableObject {
             endDate = Calendar.current.date(byAdding: .minute, value: Int(minutesRemaining), to: endDate)!
         } else if state == .active {
             state = .paused
+            
         }
     }
     
@@ -62,7 +63,7 @@ final class TimerModel: ObservableObject {
     func reset() {
         minutesRemaining = Double(initialTime)
         state = .reseted
-        timerString = "\(Int(minutesRemaining)):00"
+        timerString = minutesRemaining > 5 ? "\(Int(minutesRemaining)):00" : "0\(Int(minutesRemaining)):00"
     }
     
     func update(){
@@ -73,8 +74,8 @@ final class TimerModel: ObservableObject {
         
         if diff <= 0 {
             state = .reseted
-            timerString = "0:00"
-            playSound()
+            timerString = "00:00"
+            audioPlayer.playSound()
             return
         }
         
@@ -85,19 +86,5 @@ final class TimerModel: ObservableObject {
         
         minutesRemaining = Double(minutes)
         timerString = String(format:"%02d:%02d", minutes, seconds)
-    }
-    
-    func playSound() {
-        guard let audioFile = Bundle.main.path(forResource: "BoxingBell", ofType: "mp3") else { return }
-        
-        do {
-            let soundPlayer: AVAudioPlayer? = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioFile))
-            guard let player = soundPlayer else { return }
-            
-            player.play()
-            
-        } catch let error {
-            print("Cannot play sound. \(error)")
-        }
     }
 }

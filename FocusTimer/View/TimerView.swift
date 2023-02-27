@@ -14,8 +14,8 @@ struct TimerView: View {
     var body: some View {
         VStack {
             HStack {
-                Button("5:00") {
-                    model.minutesRemaining = 5.0
+                Button("05:00") {
+                    model.minutesRemaining = 1.0
                 }
                 Button("25:00") {
                     model.minutesRemaining = 25.0
@@ -28,12 +28,11 @@ struct TimerView: View {
             Text(model.timerString)
                 .font(.system(size: 60, weight: .light, design: .rounded))
                 .monospacedDigit()
-                .frame(height: 65)
+                .frame(height: 70)
             
             HStack {
                 Button(model.buttonTitle) {
                     model.start()
-//                    model.playSound()
                 }
 //                .buttonStyle(StartStopButton())
                 Button("Reset") {

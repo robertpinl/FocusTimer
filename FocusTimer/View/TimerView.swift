@@ -23,7 +23,7 @@ struct TimerView: View {
                 Button("50:00") {
                     model.minutesRemaining = 50.0
                 }
-            }
+            }.disabled(model.state == .active)
             
             Text(model.timerString)
                 .font(.system(size: 60, weight: .light, design: .rounded))
@@ -31,14 +31,21 @@ struct TimerView: View {
                 .frame(height: 70)
             
             HStack {
-                Button(model.buttonTitle) {
+                Button {
                     model.start()
+                } label: {
+                    Text(model.buttonTitle)
+                        .frame(width: 60)
                 }
-//                .buttonStyle(StartStopButton())
-                Button("Reset") {
+
+                Button {
                     model.reset()
+                } label: {
+                    Text("Reset")
+                        .frame(width: 60)
                 }
             }
+            .controlSize(.large)
             
             ZStack(alignment: .bottom) {
                 Text("Focus Timer")

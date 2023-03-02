@@ -13,9 +13,9 @@ struct TimerView: View {
     
     var body: some View {
         VStack {
-            HStack {
+            HStack(spacing: 10) {
                 Button("05:00") {
-                    model.minutesRemaining = 1.0
+                    model.minutesRemaining = 5.0
                 }
                 Button("25:00") {
                     model.minutesRemaining = 25.0
@@ -28,22 +28,22 @@ struct TimerView: View {
             Text(model.timerString)
                 .font(.system(size: 60, weight: .light, design: .rounded))
                 .monospacedDigit()
-                .frame(height: 70)
+                .frame(height: 75)
             
             HStack {
                 Button {
                     model.start()
                 } label: {
                     Text(model.buttonTitle)
-                        .frame(width: 60)
+                        .frame(width: 155)
                 }
 
-                Button {
-                    model.reset()
-                } label: {
-                    Text("Reset")
-                        .frame(width: 60)
-                }
+//                Button {
+//                    model.reset()
+//                } label: {
+//                    Text("Reset")
+//                        .frame(width: 70)
+//                }
             }
             .controlSize(.large)
             
@@ -51,16 +51,19 @@ struct TimerView: View {
                 Text("Focus Timer")
                     .font(.system(.caption, design: .rounded))
                     .foregroundColor(.secondary)
+                    .offset(y: 12)
                 HStack {
-                    Spacer()
                     Button("Quit") {
                         NSApplication.shared.terminate(nil)
                     }
+                    .offset(x: 85, y: 12)
+                    .buttonStyle(.plain)
+                    .controlSize(.small)
+                    .foregroundColor(.secondary)
                 }
             }
         }
-//        .frame(width: 350, height: 200)
-        .padding()
+        .padding(20)
         .onReceive(model.timer) { _ in
             model.update()
         }

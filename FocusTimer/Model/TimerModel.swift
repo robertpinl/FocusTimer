@@ -12,7 +12,7 @@ final class TimerModel: ObservableObject {
     enum TimerState {
         case active, paused, reseted
     }
-        
+    
     @Published var state: TimerState = .reseted
     @Published var ring = false
     @Published var timerString = "25:00"
@@ -24,46 +24,45 @@ final class TimerModel: ObservableObject {
     
     private let audioPlayer = AudioPlayer()
     
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     private var initialTime = 25
     private var endDate = Date()
     
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var buttonTitle: String {
         switch state {
         case .active:
-            return "Pause"
+            return "Give Up"
         case .paused:
-            return "Resume"
+            fatalError("This should never happen - now.")
+//            return "Resume"
         case .reseted:
             return "Start"
         }
     }
     
     func start() {
-        if state != .active {
+        switch state {
+        case .reseted:
             state = .active
             initialTime = Int(minutesRemaining)
             endDate = Date()
             endDate = Calendar.current.date(byAdding: .minute, value: Int(minutesRemaining), to: endDate)!
-        } else if state == .active {
-            state = .paused
-            
+            audioPlayer.playSound(sound: .start)
+        case .active:
+            state = .reseted
+            reset()
+        case .paused:
+            fatalError("This should never happen - now.")
+            //            state = .active
+            //            endDate = Date()
+            //            endDate = Calendar.current.date(byAdding: .minute, value: Int(minutesRemaining), to: endDate)!
         }
     }
     
-    
-    
-    private func pause() {
-//        if !isPaused {
-            
-//        }
-    }
-    
     func reset() {
-        minutesRemaining = Double(initialTime)
         state = .reseted
-        timerString = minutesRemaining > 5 ? "\(Int(minutesRemaining)):00" : "0\(Int(minutesRemaining)):00"
+        minutesRemaining = Double(initialTime)
     }
     
     func update(){
@@ -75,7 +74,7 @@ final class TimerModel: ObservableObject {
         if diff <= 0 {
             state = .reseted
             timerString = "00:00"
-            audioPlayer.playSound()
+            audioPlayer.playSound(sound: .ring)
             return
         }
         

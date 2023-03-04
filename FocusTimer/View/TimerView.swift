@@ -35,7 +35,7 @@ struct TimerView: View {
                     model.start()
                 } label: {
                     Text(model.buttonTitle)
-                        .frame(width: 155)
+                        .frame(width: 160)
                 }
 
 //                Button {
@@ -51,19 +51,21 @@ struct TimerView: View {
                 Text("Focus Timer")
                     .font(.system(.caption, design: .rounded))
                     .foregroundColor(.secondary)
-                    .offset(y: 12)
                 HStack {
+                    Spacer()
                     Button("Quit") {
                         NSApplication.shared.terminate(nil)
                     }
-                    .offset(x: 85, y: 12)
+//                    .offset(x: 85, y: 12)
                     .buttonStyle(.plain)
                     .controlSize(.small)
                     .foregroundColor(.secondary)
                 }
             }
+            .offset(y: 10)
         }
-        .padding(20)
+        .padding()
+        .frame(width: 210)
         .onReceive(model.timer) { _ in
             model.update()
         }

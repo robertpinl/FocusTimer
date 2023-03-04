@@ -23,6 +23,7 @@ final class TimerModel: ObservableObject {
     }
     
     private let audioPlayer = AudioPlayer()
+    private let notification = NotificationManager()
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     private var initialTime = 25
@@ -32,7 +33,7 @@ final class TimerModel: ObservableObject {
     var buttonTitle: String {
         switch state {
         case .active:
-            return "Give Up"
+            return "Give Up!"
         case .paused:
             fatalError("This should never happen - now.")
 //            return "Resume"
@@ -75,6 +76,7 @@ final class TimerModel: ObservableObject {
             state = .reseted
             timerString = "00:00"
             audioPlayer.playSound(sound: .ring)
+            notification.showTimerWentOff()
             return
         }
         

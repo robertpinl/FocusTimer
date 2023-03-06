@@ -15,6 +15,8 @@
 		224A95B229B2D26C007EA23B /* Start.wav in Resources */ = {isa = PBXBuildFile; fileRef = 224A95B129B2D26C007EA23B /* Start.wav */; };
 		224A95B429B2D319007EA23B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A95B329B2D319007EA23B /* NotificationManager.swift */; };
 		224A95B629B2D660007EA23B /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A95B529B2D660007EA23B /* CalendarView.swift */; };
+		22E83BE529B408F000FC2A6A /* FocusTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22E83BE329B408F000FC2A6A /* FocusTimer.xcdatamodeld */; };
+		22E83BE729B409DE00FC2A6A /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E83BE629B409DE00FC2A6A /* PersistenceController.swift */; };
 		22F96F2C29A9AA69006B7C05 /* TimerAxisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F96F2B29A9AA69006B7C05 /* TimerAxisView.swift */; };
 		22F96F2E29AC762E006B7C05 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F96F2D29AC762E006B7C05 /* AudioPlayer.swift */; };
 		22F96F3229AC7BFF006B7C05 /* AlarmRing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 22F96F3129AC7BFF006B7C05 /* AlarmRing.wav */; };
@@ -31,6 +33,8 @@
 		224A95B129B2D26C007EA23B /* Start.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Start.wav; sourceTree = "<group>"; };
 		224A95B329B2D319007EA23B /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		224A95B529B2D660007EA23B /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		22E83BE429B408F000FC2A6A /* FocusTimer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FocusTimer.xcdatamodel; sourceTree = "<group>"; };
+		22E83BE629B409DE00FC2A6A /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		22F96F2B29A9AA69006B7C05 /* TimerAxisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerAxisView.swift; sourceTree = "<group>"; };
 		22F96F2D29AC762E006B7C05 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		22F96F3129AC7BFF006B7C05 /* AlarmRing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AlarmRing.wav; sourceTree = "<group>"; };
@@ -68,6 +72,7 @@
 			children = (
 				22F96F3329AC7D8C006B7C05 /* View */,
 				22F96F3429AC7D96006B7C05 /* Model */,
+				22E83BE229B4088E00FC2A6A /* Persistence */,
 				22F96F3529AC7DE4006B7C05 /* Resources */,
 				220127F429A9740300467339 /* FocusTimer.entitlements */,
 				220127F129A9740300467339 /* Preview Content */,
@@ -81,6 +86,15 @@
 				220127F229A9740300467339 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		22E83BE229B4088E00FC2A6A /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				22E83BE329B408F000FC2A6A /* FocusTimer.xcdatamodeld */,
+				22E83BE629B409DE00FC2A6A /* PersistenceController.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 		22F96F3329AC7D8C006B7C05 /* View */ = {
@@ -186,6 +200,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22E83BE729B409DE00FC2A6A /* PersistenceController.swift in Sources */,
+				22E83BE529B408F000FC2A6A /* FocusTimer.xcdatamodeld in Sources */,
 				22F96F2C29A9AA69006B7C05 /* TimerAxisView.swift in Sources */,
 				224A95B629B2D660007EA23B /* CalendarView.swift in Sources */,
 				220127FB29A9788600467339 /* TimerModel.swift in Sources */,
@@ -392,6 +408,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		22E83BE329B408F000FC2A6A /* FocusTimer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				22E83BE429B408F000FC2A6A /* FocusTimer.xcdatamodel */,
+			);
+			currentVersion = 22E83BE429B408F000FC2A6A /* FocusTimer.xcdatamodel */;
+			path = FocusTimer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 220127E029A9740200467339 /* Project object */;
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CalendarView: View {
     
-    let items = 1...365
+    let items = 1...364
     
     let rows = [
         GridItem(.fixed(3), spacing: 1),
@@ -24,9 +24,9 @@ struct CalendarView: View {
     var body: some View {
         VStack {
             LazyHGrid(rows: rows, alignment: .center, spacing: 1) {
-                ForEach(items, id: \.self) { _ in
+                ForEach(items, id: \.self) { item in
                     Rectangle()
-                        .fill(Color.blue.gradient.opacity(0.8))
+                        .fill(Color.orange.gradient.opacity(0.8))
                         .frame(width: 3, height: 3)
                 }
             }

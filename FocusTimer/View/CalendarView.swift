@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CalendarView: View {
     
+    @FetchRequest(fetchRequest: FocusRecord.lastYearRecords) var records: FetchedResults<FocusRecord>
+    
     let items = 1...364
     
     let rows = [
@@ -34,8 +36,8 @@ struct CalendarView: View {
     }
 }
 
-struct CalendarView_Previews: PreviewProvider {
-    static var previews: some View {
-        CalendarView()
-    }
-}
+//struct CalendarView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CalendarView()
+//    }
+//}

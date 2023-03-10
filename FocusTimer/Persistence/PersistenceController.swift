@@ -15,7 +15,7 @@ final class PersistenceController: NSObject, ObservableObject {
     let container: NSPersistentCloudKitContainer
     
     init(inMemory: Bool = false) {
-        container = NSPersistentCloudKitContainer(name: "MyOilServiceData")
+        container = NSPersistentCloudKitContainer(name: "FocusTimer")
         
         if inMemory {
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")

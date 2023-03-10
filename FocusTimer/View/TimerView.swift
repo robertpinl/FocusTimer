@@ -86,6 +86,7 @@ struct TimerView: View {
             }
             .onAppear {
                 NotificationManager.requestPermission()
+                print(Date().startOfYear(), Date().endOfYear())
             }
     }
 }

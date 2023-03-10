@@ -28,10 +28,18 @@ struct CalendarView: View {
             LazyHGrid(rows: rows, alignment: .center, spacing: 1) {
                 ForEach(items, id: \.self) { item in
                     Rectangle()
-                        .fill(Color.orange.gradient.opacity(0.8))
+                        .fill(fillCallendar(item))
                         .frame(width: 3, height: 3)
                 }
             }
+        }
+    }
+    
+    private func fillCallendar(_ item: Int) -> some ShapeStyle {
+        if records.count >= item {
+            return Color.orange.gradient.opacity(0.8)
+        } else {
+            return Color.gray.gradient.opacity(0.15)
         }
     }
 }

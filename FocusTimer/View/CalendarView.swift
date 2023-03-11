@@ -37,7 +37,7 @@ struct CalendarView: View {
     
     private func fillCallendar(_ item: Int) -> some ShapeStyle {
         if !records.filter({ $0.date!.index == item }).isEmpty {
-            return Color.orange.gradient.opacity(0.85)
+            return Color.orange.gradient.opacity(0.9)
         } else {
             return Color.gray.gradient.opacity(0.1)
             

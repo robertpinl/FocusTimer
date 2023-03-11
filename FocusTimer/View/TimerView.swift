@@ -60,6 +60,8 @@ struct TimerView: View {
             if showCalendar {
                 CalendarView()
                     .offset(y:6)
+//                    .transition(.asymmetric(insertion: .scale, removal: .opacity))
+                    .zIndex(1)
             }
             HStack {
                 Button("Calendar") {
@@ -81,6 +83,9 @@ struct TimerView: View {
                 .foregroundColor(.secondary)
             }
             .offset(y: 10)
+            .transaction { transaction in
+                transaction.animation = nil
+            }
         }
         .frame(width: 200)
         .padding()
@@ -89,7 +94,6 @@ struct TimerView: View {
         }
         .onAppear {
             NotificationManager.requestPermission()
-            //            saveDummyRecord()
         }
     }
     

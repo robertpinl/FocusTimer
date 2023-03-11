@@ -66,7 +66,7 @@ final class TimerModel: ObservableObject {
         minutesRemaining = Double(initialTime)
     }
     
-    func update(){
+    func update(completion: () -> Void){
         guard state == .active else { return }
         
         let now = Date()
@@ -77,6 +77,7 @@ final class TimerModel: ObservableObject {
             timerString = "00:00"
             audioPlayer.playSound(sound: .ring)
             notification.showTimerWentOff()
+            completion()
             return
         }
         

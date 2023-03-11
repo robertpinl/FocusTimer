@@ -33,12 +33,20 @@ extension PersistenceController {
         
         if viewContext.hasChanges {
             do {
-                //                print("Saved!")
                 try viewContext.save()
             } catch {
                 viewContext.rollback()
                 print("❌ Failed to save data: \(error)")
             }
         }
+    }
+    
+}
+
+extension PersistenceController {
+    func deleteAll() {
+          let fetchRequest1: NSFetchRequest<NSFetchRequestResult> = FocusRecord.fetchRequest()
+          let batchDeleteRequest1 = NSBatchDeleteRequest(fetchRequest: fetchRequest1)
+          _ = try? container.viewContext.execute(batchDeleteRequest1)
     }
 }

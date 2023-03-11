@@ -21,7 +21,8 @@ extension Date {
         var components = Calendar.current.dateComponents([.year], from: self)
         components.month = 1
         let year: Date = Calendar.current.date(from: components)!
-        return Calendar.current.date(byAdding: DateComponents(day: +1), to: year)!
+        let result = Calendar.current.date(byAdding: DateComponents(day: +1), to: year)!
+        return Calendar.current.startOfDay(for: result)
     }
     
     func endOfYear() -> Date {

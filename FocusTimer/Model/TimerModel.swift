@@ -8,10 +8,7 @@
 import SwiftUI
 
 final class TimerModel: ObservableObject {
-    
-    @Environment(\.managedObjectContext) private var viewContext
-    @EnvironmentObject var persistenceController: PersistenceController
-    
+            
     enum TimerState {
         case active, paused, reseted
     }
@@ -80,7 +77,6 @@ final class TimerModel: ObservableObject {
             timerString = "00:00"
             audioPlayer.playSound(sound: .ring)
             notification.showTimerWentOff()
-            saveRecord()
             return
         }
         
@@ -91,12 +87,5 @@ final class TimerModel: ObservableObject {
         
         minutesRemaining = Double(minutes)
         timerString = String(format:"%02d:%02d", minutes, seconds)
-    }
-    
-    private func saveRecord() {
-        let newRecord = FocusRecord(context: viewContext)
-        newRecord.id = UUID().uuidString
-        newRecord.date = Date()
-        persistenceController.save()
     }
 }

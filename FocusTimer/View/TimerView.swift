@@ -9,7 +9,12 @@ import SwiftUI
 
 struct TimerView: View {
     
-    @StateObject private var model = TimerModel()
+    @FetchRequest(fetchRequest: FocusRecord.lastYearRecords) var records: FetchedResults<FocusRecord>
+    
+    @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var persistenceController: PersistenceController
+    
+    @StateObject var model = TimerModel()
     @State private var showCalendar = false
     
     var body: some View {
@@ -86,8 +91,35 @@ struct TimerView: View {
             }
             .onAppear {
                 NotificationManager.requestPermission()
+//                saveDummyRecord()
                 print(Date().startOfYear(), Date().endOfYear())
             }
+    }
+    
+    private func saveRecord() {
+        let newRecord = FocusRecord(context: viewContext)
+        newRecord.id = UUID().uuidString
+        newRecord.date = Date()
+        persistenceController.save()
+    }
+    
+    func saveDummyRecord() {
+        records.map { print($0.date!) }
+        print(records.count)
+        
+//        for i in (1...10) {
+//            let newRecord = FocusRecord(context: viewContext)
+//            newRecord.id = UUID().uuidString
+//
+//            let currentDate = Date()
+//            var dateComponent = DateComponents()
+//            dateComponent.month = 3
+//            dateComponent.day = i * 2
+//            let futureDate = Calendar.current.date(byAdding: dateComponent, to: currentDate)
+//
+//            newRecord.date = futureDate
+//            persistenceController.save()
+//        }
     }
 }
 

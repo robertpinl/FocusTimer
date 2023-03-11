@@ -9,11 +9,9 @@ import Foundation
 import CoreData
 
 final class PersistenceController: NSObject, ObservableObject {
-    
-    @Published var focusRecords: [FocusRecord] = []
-    
+        
     let container: NSPersistentCloudKitContainer
-    
+        
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "FocusTimer")
         

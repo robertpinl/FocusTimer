@@ -36,10 +36,11 @@ struct CalendarView: View {
     }
     
     private func fillCallendar(_ item: Int) -> some ShapeStyle {
-        if records.count >= item {
+        if !records.filter({ $0.date!.index == item }).isEmpty {
             return Color.orange.gradient.opacity(0.8)
         } else {
             return Color.gray.gradient.opacity(0.15)
+            
         }
     }
 }

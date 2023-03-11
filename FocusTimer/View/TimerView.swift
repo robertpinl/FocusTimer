@@ -19,6 +19,10 @@ struct TimerView: View {
     
     var body: some View {
         VStack {
+            Text("Focus Timer")
+                .font(.caption)
+                .foregroundColor(.secondary)
+                .offset(y:-5)
             HStack(spacing: 10) {
                 Button("05:00") {
                     model.minutesRemaining = 5.0
@@ -34,7 +38,7 @@ struct TimerView: View {
             Text(model.timerString)
                 .font(.system(size: 60, weight: .light, design: .rounded))
                 .monospacedDigit()
-                .frame(height: 75)
+                .frame(height: 80)
             
             HStack {
                 Button {
@@ -57,30 +61,24 @@ struct TimerView: View {
                 CalendarView()
                     .offset(y:6)
             }
-            
-            ZStack(alignment: .bottom) {
-                Text("Focus Timer")
-                    .font(.system(.caption, design: .rounded))
-                    .foregroundColor(.secondary)
-                HStack {
-                    Button("Calendar") {
-                        withAnimation {
-                            showCalendar.toggle()
-                        }
+            HStack {
+                Button("Calendar") {
+                    withAnimation {
+                        showCalendar.toggle()
                     }
-                    .buttonStyle(.plain)
-                    .controlSize(.small)
-                    .foregroundColor(.secondary)
-                    
-                    Spacer()
-                    
-                    Button("Quit") {
-                        NSApplication.shared.terminate(nil)
-                    }
-                    .buttonStyle(.plain)
-                    .controlSize(.small)
-                    .foregroundColor(.secondary)
                 }
+                .buttonStyle(.plain)
+                .controlSize(.small)
+                .foregroundColor(.secondary)
+                
+                Spacer()
+                
+                Button("Quit") {
+                    NSApplication.shared.terminate(nil)
+                }
+                .buttonStyle(.plain)
+                .controlSize(.small)
+                .foregroundColor(.secondary)
             }
             .offset(y: 10)
         }
@@ -91,7 +89,7 @@ struct TimerView: View {
         }
         .onAppear {
             NotificationManager.requestPermission()
-            saveDummyRecord()
+            //            saveDummyRecord()
         }
     }
     
@@ -103,18 +101,18 @@ struct TimerView: View {
     }
     
     func saveDummyRecord() {
-                let newRecord = FocusRecord(context: viewContext)
-                newRecord.id = UUID().uuidString
-
-                var dateComponents = DateComponents()
-                dateComponents.year = 2023
-                dateComponents.month = 2
-                dateComponents.day = 1
-
-                let date = Calendar.current.date(from: dateComponents)
-
-                newRecord.date = date
-                persistenceController.save()
+        let newRecord = FocusRecord(context: viewContext)
+        newRecord.id = UUID().uuidString
+        
+        var dateComponents = DateComponents()
+        dateComponents.year = 2023
+        dateComponents.month = 2
+        dateComponents.day = 1
+        
+        let date = Calendar.current.date(from: dateComponents)
+        
+        newRecord.date = date
+        persistenceController.save()
     }
 }
 

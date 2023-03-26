@@ -14,6 +14,12 @@ extension FocusRecord {
         request.sortDescriptors = [NSSortDescriptor(keyPath: \FocusRecord.date, ascending: true)]
         request.predicate = NSPredicate(format: "%K >= %@ && %K <= %@", "date", Date().startOfYear() as NSDate, "date", Date().endOfYear() as NSDate)
         return request }()
+    
+    static var allRecords: NSFetchRequest<FocusRecord> = {
+        let request: NSFetchRequest<FocusRecord> = FocusRecord.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \FocusRecord.date, ascending: true)]
+//        request.predicate = NSPredicate(format: "%K >= %@ && %K <= %@", "date", Date().startOfYear() as NSDate, "date", Date().endOfYear() as NSDate)
+        return request }()
 }
 
 extension Date {

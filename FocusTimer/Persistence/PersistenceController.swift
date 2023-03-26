@@ -15,6 +15,14 @@ final class PersistenceController: NSObject, ObservableObject {
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "FocusTimer")
         
+        guard let description = container.persistentStoreDescriptions.first else {
+                    fatalError("Failed to retrieve a persistent store description.")
+                }
+                description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+                description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+                description.shouldMigrateStoreAutomatically = true
+                description.shouldInferMappingModelAutomatically = true
+        
         if inMemory {
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
         }
@@ -34,6 +42,7 @@ extension PersistenceController {
         if viewContext.hasChanges {
             do {
                 try viewContext.save()
+                print("✅ Data successfully saved")
             } catch {
                 viewContext.rollback()
                 print("❌ Failed to save data: \(error)")

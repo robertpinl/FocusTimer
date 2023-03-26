@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TelemetryClient
 
 @main
 struct FocusTimerApp: App {
@@ -19,4 +20,9 @@ struct FocusTimerApp: App {
                 .environmentObject(persistenceController)
         }.menuBarExtraStyle(.window)
     }
+    
+    init() {
+            let configuration = TelemetryManagerConfiguration(appID: valueForAppId())
+            TelemetryManager.initialize(with: configuration)
+        }
 }

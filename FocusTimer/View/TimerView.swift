@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TelemetryClient
 
 struct TimerView: View {
     
@@ -43,6 +44,7 @@ struct TimerView: View {
             HStack {
                 Button {
                     model.start()
+                    TelemetryManager.send("timerStarted")
                 } label: {
                     Text(model.buttonTitle)
                         .frame(width: 160)
@@ -60,7 +62,6 @@ struct TimerView: View {
             if showCalendar {
                 CalendarView()
                     .offset(y:6)
-//                    .transition(.asymmetric(insertion: .scale, removal: .opacity))
                     .zIndex(1)
             }
             HStack {
@@ -94,6 +95,7 @@ struct TimerView: View {
         }
         .onAppear {
             NotificationManager.requestPermission()
+            persistenceController.deleteAll()
         }
     }
     
@@ -105,18 +107,18 @@ struct TimerView: View {
     }
     
     func saveDummyRecord() {
-        let newRecord = FocusRecord(context: viewContext)
-        newRecord.id = UUID().uuidString
-        
-        var dateComponents = DateComponents()
-        dateComponents.year = 2023
-        dateComponents.month = 2
-        dateComponents.day = 1
-        
-        let date = Calendar.current.date(from: dateComponents)
-        
-        newRecord.date = date
-        persistenceController.save()
+//        let newRecord = FocusRecord(context: viewContext)
+//        newRecord.id = UUID().uuidString
+//
+//        var dateComponents = DateComponents()
+//        dateComponents.year = 2023
+//        dateComponents.month = 2
+//        dateComponents.day = 1
+//
+//        let date = Calendar.current.date(from: dateComponents)
+//
+//        newRecord.date = date
+//        persistenceController.save()
     }
 }
 

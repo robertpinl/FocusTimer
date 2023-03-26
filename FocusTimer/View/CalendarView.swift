@@ -10,6 +10,7 @@ import SwiftUI
 struct CalendarView: View {
     
     @FetchRequest(fetchRequest: FocusRecord.lastYearRecords) var records: FetchedResults<FocusRecord>
+    @FetchRequest(fetchRequest: FocusRecord.allRecords) var allrecords: FetchedResults<FocusRecord>
     
     let items = 1...364
     
@@ -32,6 +33,10 @@ struct CalendarView: View {
                         .frame(width: 3, height: 3)
                 }
             }
+        }
+        .onAppear {
+            print("🟢 \(records.count)")
+            print("🔵 \(allrecords.count)")
         }
     }
     

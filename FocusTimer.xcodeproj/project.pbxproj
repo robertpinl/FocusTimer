@@ -12,6 +12,9 @@
 		220127F029A9740300467339 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 220127EF29A9740300467339 /* Assets.xcassets */; };
 		220127F329A9740300467339 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 220127F229A9740300467339 /* Preview Assets.xcassets */; };
 		220127FB29A9788600467339 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220127FA29A9788600467339 /* TimerModel.swift */; };
+		220E426529CFF73F0072C554 /* TelemetryClient in Frameworks */ = {isa = PBXBuildFile; productRef = 220E426429CFF73F0072C554 /* TelemetryClient */; };
+		220E426729CFFDDD0072C554 /* AppId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220E426629CFFDDD0072C554 /* AppId.swift */; };
+		220E426929CFFE220072C554 /* AppId.plist in Resources */ = {isa = PBXBuildFile; fileRef = 220E426829CFFE220072C554 /* AppId.plist */; };
 		224A95B229B2D26C007EA23B /* Start.wav in Resources */ = {isa = PBXBuildFile; fileRef = 224A95B129B2D26C007EA23B /* Start.wav */; };
 		224A95B429B2D319007EA23B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A95B329B2D319007EA23B /* NotificationManager.swift */; };
 		224A95B629B2D660007EA23B /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A95B529B2D660007EA23B /* CalendarView.swift */; };
@@ -31,6 +34,8 @@
 		220127F229A9740300467339 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		220127F429A9740300467339 /* FocusTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FocusTimer.entitlements; sourceTree = "<group>"; };
 		220127FA29A9788600467339 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
+		220E426629CFFDDD0072C554 /* AppId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppId.swift; sourceTree = "<group>"; };
+		220E426829CFFE220072C554 /* AppId.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppId.plist; sourceTree = "<group>"; };
 		224A95B129B2D26C007EA23B /* Start.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Start.wav; sourceTree = "<group>"; };
 		224A95B329B2D319007EA23B /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		224A95B529B2D660007EA23B /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -47,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				220E426529CFF73F0072C554 /* TelemetryClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +133,8 @@
 				220127EF29A9740300467339 /* Assets.xcassets */,
 				22F96F3129AC7BFF006B7C05 /* AlarmRing.wav */,
 				224A95B129B2D26C007EA23B /* Start.wav */,
+				220E426629CFFDDD0072C554 /* AppId.swift */,
+				220E426829CFFE220072C554 /* AppId.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -147,6 +155,9 @@
 			dependencies = (
 			);
 			name = FocusTimer;
+			packageProductDependencies = (
+				220E426429CFF73F0072C554 /* TelemetryClient */,
+			);
 			productName = FocusTimer;
 			productReference = 220127E829A9740200467339 /* FocusTimer.app */;
 			productType = "com.apple.product-type.application";
@@ -175,6 +186,9 @@
 				Base,
 			);
 			mainGroup = 220127DF29A9740200467339;
+			packageReferences = (
+				220E426329CFF73F0072C554 /* XCRemoteSwiftPackageReference "SwiftClient" */,
+			);
 			productRefGroup = 220127E929A9740200467339 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -191,6 +205,7 @@
 			files = (
 				22F96F3229AC7BFF006B7C05 /* AlarmRing.wav in Resources */,
 				220127F329A9740300467339 /* Preview Assets.xcassets in Resources */,
+				220E426929CFFE220072C554 /* AppId.plist in Resources */,
 				220127F029A9740300467339 /* Assets.xcassets in Resources */,
 				224A95B229B2D26C007EA23B /* Start.wav in Resources */,
 			);
@@ -207,6 +222,7 @@
 				22E83BE529B408F000FC2A6A /* FocusTimer.xcdatamodeld in Sources */,
 				22F96F2C29A9AA69006B7C05 /* TimerAxisView.swift in Sources */,
 				224A95B629B2D660007EA23B /* CalendarView.swift in Sources */,
+				220E426729CFFDDD0072C554 /* AppId.swift in Sources */,
 				220127FB29A9788600467339 /* TimerModel.swift in Sources */,
 				220127EE29A9740200467339 /* TimerView.swift in Sources */,
 				224A95B429B2D319007EA23B /* NotificationManager.swift in Sources */,
@@ -347,13 +363,14 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FocusTimer/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.9;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.robertpinl.FocusTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -376,13 +393,14 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FocusTimer/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.9;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.robertpinl.FocusTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -412,6 +430,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		220E426329CFF73F0072C554 /* XCRemoteSwiftPackageReference "SwiftClient" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TelemetryDeck/SwiftClient.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		220E426429CFF73F0072C554 /* TelemetryClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 220E426329CFF73F0072C554 /* XCRemoteSwiftPackageReference "SwiftClient" */;
+			productName = TelemetryClient;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		22E83BE329B408F000FC2A6A /* FocusTimer.xcdatamodeld */ = {

@@ -10,10 +10,10 @@ import CoreData
 
 final class PersistenceController: NSObject, ObservableObject {
         
-    let container: NSPersistentCloudKitContainer
+    let container: NSPersistentContainer
         
     init(inMemory: Bool = false) {
-        container = NSPersistentCloudKitContainer(name: "FocusTimer")
+        container = NSPersistentContainer(name: "FocusTimer")
         
         guard let description = container.persistentStoreDescriptions.first else {
                     fatalError("Failed to retrieve a persistent store description.")

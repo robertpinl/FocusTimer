@@ -44,6 +44,7 @@ struct TimerView: View {
             HStack {
                 Button {
                     model.start()
+                    saveRecord()
                     TelemetryManager.send("timerStarted")
                 } label: {
                     Text(model.buttonTitle)
@@ -95,7 +96,6 @@ struct TimerView: View {
         }
         .onAppear {
             NotificationManager.requestPermission()
-            persistenceController.deleteAll()
         }
     }
     

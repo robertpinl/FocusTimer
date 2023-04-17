@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-final class PersistenceController: NSObject, ObservableObject {
+final class PersistenceController: ObservableObject {
         
     let container: NSPersistentContainer
         
@@ -53,7 +53,7 @@ extension PersistenceController {
 }
 
 extension PersistenceController {
-    func deleteAll() {
+    private func deleteAll() {
           let fetchRequest1: NSFetchRequest<NSFetchRequestResult> = FocusRecord.fetchRequest()
           let batchDeleteRequest1 = NSBatchDeleteRequest(fetchRequest: fetchRequest1)
           _ = try? container.viewContext.execute(batchDeleteRequest1)

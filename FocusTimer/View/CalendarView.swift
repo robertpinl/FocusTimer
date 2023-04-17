@@ -14,15 +14,7 @@ struct CalendarView: View {
     
     let items = 1...364
     
-    let rows = [
-        GridItem(.fixed(3), spacing: 1),
-        GridItem(.fixed(3), spacing: 1),
-        GridItem(.fixed(3), spacing: 1),
-        GridItem(.fixed(3), spacing: 1),
-        GridItem(.fixed(3), spacing: 1),
-        GridItem(.fixed(3), spacing: 1),
-        GridItem(.fixed(3), spacing: 1)
-    ]
+    let rows = Array(repeating: GridItem(.fixed(3), spacing: 1), count: 7)
     
     var body: some View {
         VStack {
@@ -33,10 +25,6 @@ struct CalendarView: View {
                         .frame(width: 3, height: 3)
                 }
             }
-        }
-        .onAppear {
-            print("🟢 \(records.count)")
-            print("🔵 \(allrecords.count)")
         }
     }
     

@@ -10,6 +10,8 @@ Overall, the Focus Timer app is a useful tool for anyone looking to improve thei
 
 <img src="https://github.com/robertpinl/FocusTimer/blob/main/ReadmeAssets/FocusTimerScreenshot.png" width="" height="300"/>
 
+<a href="https://apps.apple.com/app/focus-timer-productivity-pal/id6446223892"><img src="https://github.com/robertpinl/FocusTimer/blob/main/ReadmeAssets/appstore.png" width="" height="85"/></a>
+
 ## License
 Focus Timer is available under the MIT license. See the LICENSE file for more info.
 

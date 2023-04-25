@@ -13,6 +13,11 @@ struct FocusTimerApp: App {
     
     @StateObject var persistenceController = PersistenceController()
     
+    init() {
+            let configuration = TelemetryManagerConfiguration(appID: valueForAppId())
+            TelemetryManager.initialize(with: configuration)
+        }
+    
     var body: some Scene {
         MenuBarExtra("FocusTimer", image: "icon") {
             TimerView()
@@ -20,9 +25,4 @@ struct FocusTimerApp: App {
                 .environmentObject(persistenceController)
         }.menuBarExtraStyle(.window)
     }
-    
-    init() {
-            let configuration = TelemetryManagerConfiguration(appID: valueForAppId())
-            TelemetryManager.initialize(with: configuration)
-        }
 }

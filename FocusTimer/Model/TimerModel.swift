@@ -78,6 +78,7 @@ final class TimerModel: ObservableObject {
             audioPlayer.playSound(sound: .ring)
             notification.showTimerWentOff()
             completion()
+            reset()
             return
         }
         

@@ -29,11 +29,18 @@ struct CalendarView: View {
     }
     
     private func fillCallendar(_ item: Int) -> some ShapeStyle {
-        if !records.filter({ $0.date!.index == item }).isEmpty {
-            return Color.orange.gradient.opacity(0.9)
-        } else {
+        let filtered = records.filter({ $0.date!.index == item })
+        
+        if filtered.isEmpty {
             return Color.gray.gradient.opacity(0.1)
-            
+        } else if filtered.count == 1  {
+            return Color.orange.gradient.opacity(0.55)
+        } else if filtered.count == 2 {
+            return Color.orange.gradient.opacity(0.65)
+        } else if filtered.count == 3 {
+            return Color.orange.gradient.opacity(0.75)
+        } else {
+            return Color.orange.gradient.opacity(0.8)
         }
     }
 }

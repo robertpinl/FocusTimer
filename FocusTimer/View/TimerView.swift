@@ -50,12 +50,6 @@ struct TimerView: View {
                         .frame(width: 160)
                 }
                 
-                //                Button {
-                //                    model.reset()
-                //                } label: {
-                //                    Text("Reset")
-                //                        .frame(width: 70)
-                //                }
             }
             .controlSize(.large)
             
@@ -103,21 +97,6 @@ struct TimerView: View {
         newRecord.id = UUID().uuidString
         newRecord.date = Date()
         persistenceController.save()
-    }
-    
-    func saveDummyRecord() {
-//        let newRecord = FocusRecord(context: viewContext)
-//        newRecord.id = UUID().uuidString
-//
-//        var dateComponents = DateComponents()
-//        dateComponents.year = 2023
-//        dateComponents.month = 2
-//        dateComponents.day = 1
-//
-//        let date = Calendar.current.date(from: dateComponents)
-//
-//        newRecord.date = date
-//        persistenceController.save()
     }
 }
 

@@ -22,7 +22,6 @@ struct FocusTimerApp: App {
         MenuBarExtra("FocusTimer", image: "icon") {
             TimerView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .environmentObject(persistenceController)
         }.menuBarExtraStyle(.window)
     }
 }

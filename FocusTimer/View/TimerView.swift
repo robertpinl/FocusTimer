@@ -11,10 +11,7 @@ import TelemetryClient
 struct TimerView: View {
     
     @FetchRequest(fetchRequest: FocusRecord.lastYearRecords) var records: FetchedResults<FocusRecord>
-    
-    @Environment(\.managedObjectContext) private var viewContext
-    @EnvironmentObject var persistenceController: PersistenceController
-    
+        
     @StateObject var model = TimerModel()
     @State private var showCalendar = false
     
@@ -85,18 +82,11 @@ struct TimerView: View {
         .frame(width: 200)
         .padding()
         .onReceive(model.timer) { _ in
-            model.update(completion: saveRecord)
+            model.update()
         }
         .onAppear {
             NotificationManager.requestPermission()
         }
-    }
-    
-    private func saveRecord() {
-        let newRecord = FocusRecord(context: viewContext)
-        newRecord.id = UUID().uuidString
-        newRecord.date = Date()
-        persistenceController.save()
     }
 }
 

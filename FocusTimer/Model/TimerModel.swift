@@ -22,6 +22,7 @@ final class TimerModel: ObservableObject {
         }
     }
     
+    private let persistenceController = PersistenceController.shared
     private let audioPlayer = AudioPlayer()
     private let notification = NotificationManager()
     
@@ -35,8 +36,7 @@ final class TimerModel: ObservableObject {
         case .active:
             return "Give Up!"
         case .paused:
-            fatalError("This should never happen - now.")
-//            return "Resume"
+            return "Resume"
         case .reseted:
             return "Start"
         }
@@ -54,19 +54,19 @@ final class TimerModel: ObservableObject {
             state = .reseted
             reset()
         case .paused:
-            fatalError("This should never happen - now.")
+            fatalError("TimerModel.start >> Error: Pause functionaly hasn't been implemented")
             //            state = .active
             //            endDate = Date()
             //            endDate = Calendar.current.date(byAdding: .minute, value: Int(minutesRemaining), to: endDate)!
         }
     }
     
-    func reset() {
+    private func reset() {
         state = .reseted
         minutesRemaining = Double(initialTime)
     }
     
-    func update(completion: () -> Void){
+    func update(){
         guard state == .active else { return }
         
         let now = Date()
@@ -77,7 +77,7 @@ final class TimerModel: ObservableObject {
             timerString = "00:00"
             audioPlayer.playSound(sound: .ring)
             notification.showTimerWentOff()
-            completion()
+            saveRecord()
             reset()
             return
         }
@@ -89,5 +89,12 @@ final class TimerModel: ObservableObject {
         
         minutesRemaining = Double(minutes)
         timerString = String(format:"%02d:%02d", minutes, seconds)
+    }
+    
+    private func saveRecord() {
+        let newRecord = FocusRecord(context: persistenceController.container.viewContext)
+        newRecord.id = UUID().uuidString
+        newRecord.date = Date()
+        persistenceController.save()
     }
 }

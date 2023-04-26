@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Return telemetry deck id
 func valueForAppId() -> String {
     let filePath = Bundle.main.path(forResource: "AppId", ofType: "plist")
     let plist = NSDictionary(contentsOfFile:filePath!)

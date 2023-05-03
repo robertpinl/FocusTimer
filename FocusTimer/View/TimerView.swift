@@ -11,7 +11,7 @@ import TelemetryClient
 struct TimerView: View {
     
     @FetchRequest(fetchRequest: FocusRecord.lastYearRecords) var records: FetchedResults<FocusRecord>
-        
+    
     @StateObject var model = TimerModel()
     @State private var showCalendar = false
     
@@ -55,6 +55,7 @@ struct TimerView: View {
                     .offset(y:6)
                     .zIndex(1)
             }
+            
             HStack {
                 Button("Calendar") {
                     withAnimation {
@@ -75,10 +76,9 @@ struct TimerView: View {
                 .foregroundColor(.secondary)
             }
             .offset(y: 10)
-            .transaction { transaction in
-                transaction.animation = nil
-            }
+            
         }
+        .zIndex(2)
         .frame(width: 200)
         .padding()
         .background(Material.ultraThick)

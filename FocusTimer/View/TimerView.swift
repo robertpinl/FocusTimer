@@ -23,7 +23,7 @@ struct TimerView: View {
                 .offset(y:-5)
             HStack(spacing: 10) {
                 Button("05:00") {
-                    model.minutesRemaining = 1.0
+                    model.minutesRemaining = 5.0
                 }
                 Button("25:00") {
                     model.minutesRemaining = 25.0

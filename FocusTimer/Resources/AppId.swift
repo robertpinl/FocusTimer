@@ -12,6 +12,5 @@ func valueForAppId() -> String {
     let filePath = Bundle.main.path(forResource: "AppId", ofType: "plist")
     let plist = NSDictionary(contentsOfFile:filePath!)
     let value = plist?.object(forKey: "AppId") as! String
-    
     return value
 }

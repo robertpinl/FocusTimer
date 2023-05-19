@@ -34,13 +34,13 @@ struct CalendarView: View {
         if filtered.isEmpty {
             return Color.gray.gradient.opacity(0.1)
         } else if filtered.count == 1  {
-            return Color.orange.gradient.opacity(0.55)
-        } else if filtered.count == 2 {
-            return Color.orange.gradient.opacity(0.65)
-        } else if filtered.count == 3 {
             return Color.orange.gradient.opacity(0.75)
+        } else if filtered.count == 2 {
+            return Color.orange.gradient.opacity(0.85)
+        } else if filtered.count == 3 {
+            return Color.orange.gradient.opacity(0.9)
         } else {
-            return Color.orange.gradient.opacity(0.8)
+            return Color.orange.gradient.opacity(0.95)
         }
     }
 }

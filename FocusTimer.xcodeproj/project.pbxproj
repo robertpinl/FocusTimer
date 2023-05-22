@@ -16,7 +16,6 @@
 		224A95B229B2D26C007EA23B /* Start.wav in Resources */ = {isa = PBXBuildFile; fileRef = 224A95B129B2D26C007EA23B /* Start.wav */; };
 		224A95B429B2D319007EA23B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A95B329B2D319007EA23B /* NotificationManager.swift */; };
 		224A95B629B2D660007EA23B /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A95B529B2D660007EA23B /* CalendarView.swift */; };
-		22A914D22A0A1FD20099B295 /* TelemetryId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A914D12A0A1FD20099B295 /* TelemetryId.swift */; };
 		22C30E9D29B9B8B700DF48B6 /* FocusRecord+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C30E9C29B9B8B700DF48B6 /* FocusRecord+Ext.swift */; };
 		22E83BE529B408F000FC2A6A /* FocusTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22E83BE329B408F000FC2A6A /* FocusTimer.xcdatamodeld */; };
 		22E83BE729B409DE00FC2A6A /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E83BE629B409DE00FC2A6A /* PersistenceController.swift */; };
@@ -36,7 +35,6 @@
 		224A95B129B2D26C007EA23B /* Start.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Start.wav; sourceTree = "<group>"; };
 		224A95B329B2D319007EA23B /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		224A95B529B2D660007EA23B /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
-		22A914D12A0A1FD20099B295 /* TelemetryId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelemetryId.swift; sourceTree = "<group>"; };
 		22C30E9C29B9B8B700DF48B6 /* FocusRecord+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FocusRecord+Ext.swift"; sourceTree = "<group>"; };
 		22E83BE429B408F000FC2A6A /* FocusTimer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FocusTimer.xcdatamodel; sourceTree = "<group>"; };
 		22E83BE629B409DE00FC2A6A /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
@@ -82,7 +80,6 @@
 				22F96F3529AC7DE4006B7C05 /* Resources */,
 				220127F429A9740300467339 /* FocusTimer.entitlements */,
 				220127F129A9740300467339 /* Preview Content */,
-				22A914D12A0A1FD20099B295 /* TelemetryId.swift */,
 			);
 			path = FocusTimer;
 			sourceTree = "<group>";
@@ -214,7 +211,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22A914D22A0A1FD20099B295 /* TelemetryId.swift in Sources */,
 				22E83BE729B409DE00FC2A6A /* PersistenceController.swift in Sources */,
 				22E83BE529B408F000FC2A6A /* FocusTimer.xcdatamodeld in Sources */,
 				22F96F2C29A9AA69006B7C05 /* TimerAxisView.swift in Sources */,

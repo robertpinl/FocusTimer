@@ -14,7 +14,7 @@ struct FocusTimerApp: App {
     @StateObject var persistenceController = PersistenceController()
     
     init() {
-        let configuration = TelemetryManagerConfiguration(appID: AppId.value)
+        let configuration = TelemetryManagerConfiguration(appID: "APP_ID")
         TelemetryManager.initialize(with: configuration)
         TelemetryManager.send("appLaunchedRegularly")
     }

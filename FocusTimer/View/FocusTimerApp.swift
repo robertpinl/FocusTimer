@@ -6,18 +6,11 @@
 //
 
 import SwiftUI
-import TelemetryClient
 
 @main
 struct FocusTimerApp: App {
     
     @StateObject var persistenceController = PersistenceController()
-    
-    init() {
-        let configuration = TelemetryManagerConfiguration(appID: "APP_ID")
-        TelemetryManager.initialize(with: configuration)
-        TelemetryManager.send("appLaunchedRegularly")
-    }
     
     var body: some Scene {
         MenuBarExtra("FocusTimer", image: "icon") {

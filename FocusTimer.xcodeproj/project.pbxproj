@@ -12,7 +12,6 @@
 		220127F029A9740300467339 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 220127EF29A9740300467339 /* Assets.xcassets */; };
 		220127F329A9740300467339 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 220127F229A9740300467339 /* Preview Assets.xcassets */; };
 		220127FB29A9788600467339 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220127FA29A9788600467339 /* TimerModel.swift */; };
-		220E426529CFF73F0072C554 /* TelemetryClient in Frameworks */ = {isa = PBXBuildFile; productRef = 220E426429CFF73F0072C554 /* TelemetryClient */; };
 		224A95B229B2D26C007EA23B /* Start.wav in Resources */ = {isa = PBXBuildFile; fileRef = 224A95B129B2D26C007EA23B /* Start.wav */; };
 		224A95B429B2D319007EA23B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A95B329B2D319007EA23B /* NotificationManager.swift */; };
 		224A95B629B2D660007EA23B /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A95B529B2D660007EA23B /* CalendarView.swift */; };
@@ -48,7 +47,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				220E426529CFF73F0072C554 /* TelemetryClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,7 +148,6 @@
 			);
 			name = FocusTimer;
 			packageProductDependencies = (
-				220E426429CFF73F0072C554 /* TelemetryClient */,
 			);
 			productName = FocusTimer;
 			productReference = 220127E829A9740200467339 /* FocusTimer.app */;
@@ -439,14 +436,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		220E426429CFF73F0072C554 /* TelemetryClient */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 220E426329CFF73F0072C554 /* XCRemoteSwiftPackageReference "SwiftClient" */;
-			productName = TelemetryClient;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		22E83BE329B408F000FC2A6A /* FocusTimer.xcdatamodeld */ = {

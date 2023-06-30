@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import TelemetryClient
 
 struct TimerView: View {
     
@@ -41,7 +40,6 @@ struct TimerView: View {
             HStack {
                 Button {
                     model.start()
-                    TelemetryManager.send("timerStarted")
                 } label: {
                     Text(model.buttonTitle)
                         .frame(width: 160)
@@ -49,6 +47,13 @@ struct TimerView: View {
                 
             }
             .controlSize(.large)
+            
+            Button("Reset") {
+                model.resetTimer()
+            }
+            .buttonStyle(.plain)
+            .foregroundColor(.secondary)
+            .padding(.top, 5)
             
             if showCalendar {
                 CalendarView()
@@ -78,13 +83,14 @@ struct TimerView: View {
             .offset(y: 10)
             
         }
+        .onReceive(model.$timer) { _ in
+            model.update()
+        }
         .zIndex(2)
         .frame(width: 200)
         .padding()
         .background(Material.ultraThick)
-        .onReceive(model.timer) { _ in
-            model.update()
-        }
+
         .onAppear {
             NotificationManager.requestPermission()
         }

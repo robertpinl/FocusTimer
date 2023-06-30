@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import Combine
 
 final class TimerModel: ObservableObject {
-            
+    
     enum TimerState {
         case active, paused, reseted
     }
@@ -26,15 +27,15 @@ final class TimerModel: ObservableObject {
     private let audioPlayer = AudioPlayer()
     private let notification = NotificationManager()
     
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @Published var timer: AnyCancellable?
     private var initialTime = 25
     private var endDate = Date()
-    
+    private var pausedTime: TimeInterval = 0
     
     var buttonTitle: String {
         switch state {
         case .active:
-            return "Give Up!"
+            return "Pause"
         case .paused:
             return "Resume"
         case .reseted:
@@ -50,23 +51,45 @@ final class TimerModel: ObservableObject {
             endDate = Date()
             endDate = Calendar.current.date(byAdding: .minute, value: Int(minutesRemaining), to: endDate)!
             audioPlayer.playSound(sound: .start)
+            startTimer()
         case .active:
-            state = .reseted
-            reset()
+            state = .paused
+            pauseTimer()
         case .paused:
-            fatalError("TimerModel.start >> Error: Pause functionaly hasn't been implemented")
-            //            state = .active
-            //            endDate = Date()
-            //            endDate = Calendar.current.date(byAdding: .minute, value: Int(minutesRemaining), to: endDate)!
+            state = .active
+            resumeTimer()
         }
     }
     
-    private func reset() {
-        state = .reseted
-        minutesRemaining = Double(initialTime)
+    private func startTimer() {
+        timer = Timer.publish(every: 1, on: .main, in: .common)
+            .autoconnect()
+            .sink { [weak self] _ in
+                self?.update()
+            }
     }
     
-    func update(){
+    private func pauseTimer() {
+        timer?.cancel()
+        let now = Date()
+        pausedTime = endDate.timeIntervalSince1970 - now.timeIntervalSince1970
+    }
+    
+    private func resumeTimer() {
+        guard let timer = timer else {
+            fatalError("TimerModel.resumeTimer >> Error: Timer not initialized")
+        }
+        endDate = Date().addingTimeInterval(pausedTime)
+        startTimer()
+    }
+    
+    func resetTimer() {
+        timer?.cancel()
+        pausedTime = 0
+        state = .reseted
+    }
+    
+    func update() {
         guard state == .active else { return }
         
         let now = Date()
@@ -78,7 +101,7 @@ final class TimerModel: ObservableObject {
             audioPlayer.playSound(sound: .ring)
             notification.showTimerWentOff()
             saveRecord()
-            reset()
+            resetTimer()
             return
         }
         
@@ -88,7 +111,7 @@ final class TimerModel: ObservableObject {
         let seconds = calendar.component(.second, from: date)
         
         minutesRemaining = Double(minutes)
-        timerString = String(format:"%02d:%02d", minutes, seconds)
+        timerString = String(format: "%02d:%02d", minutes, seconds)
     }
     
     private func saveRecord() {
@@ -98,3 +121,5 @@ final class TimerModel: ObservableObject {
         persistenceController.save()
     }
 }
+
+

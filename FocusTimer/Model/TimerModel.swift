@@ -76,9 +76,6 @@ final class TimerModel: ObservableObject {
     }
     
     private func resumeTimer() {
-        guard let timer = timer else {
-            fatalError("TimerModel.resumeTimer >> Error: Timer not initialized")
-        }
         endDate = Date().addingTimeInterval(pausedTime)
         startTimer()
     }
@@ -87,6 +84,7 @@ final class TimerModel: ObservableObject {
         timer?.cancel()
         pausedTime = 0
         state = .reseted
+        minutesRemaining = Double(initialTime)
     }
     
     func update() {

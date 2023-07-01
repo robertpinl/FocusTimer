@@ -30,7 +30,7 @@ struct TimerView: View {
                 Button("50:00") {
                     model.minutesRemaining = 50.0
                 }
-            }.disabled(model.state == .active)
+            }.disabled(model.state != .reseted)
             
             Text(model.timerString)
                 .font(.system(size: 60, weight: .light, design: .rounded))
@@ -52,8 +52,11 @@ struct TimerView: View {
                 model.resetTimer()
             }
             .buttonStyle(.plain)
+            .controlSize(.small)
             .foregroundColor(.secondary)
             .padding(.top, 5)
+            .opacity(model.state != .reseted ? 1 : 0)
+            .disabled(model.state != .reseted ? false : true)
             
             if showCalendar {
                 CalendarView()
@@ -90,7 +93,7 @@ struct TimerView: View {
         .frame(width: 200)
         .padding()
         .background(Material.ultraThick)
-
+        
         .onAppear {
             NotificationManager.requestPermission()
         }

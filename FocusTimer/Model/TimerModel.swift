@@ -10,6 +10,8 @@ import Combine
 
 final class TimerModel: ObservableObject {
     
+    @AppStorage("playSound") var playSound = true
+    
     enum TimerState {
         case active, paused, reseted
     }
@@ -50,8 +52,8 @@ final class TimerModel: ObservableObject {
             initialTime = Int(minutesRemaining)
             endDate = Date()
             endDate = Calendar.current.date(byAdding: .minute, value: Int(minutesRemaining), to: endDate)!
-            audioPlayer.playSound(sound: .start)
             startTimer()
+            if playSound { audioPlayer.playSound(sound: .start) }
         case .active:
             state = .paused
             pauseTimer()
@@ -96,10 +98,10 @@ final class TimerModel: ObservableObject {
         if diff <= 0 {
             state = .reseted
             timerString = "00:00"
-            audioPlayer.playSound(sound: .ring)
             notification.showTimerWentOff()
             saveRecord()
             resetTimer()
+            if playSound { audioPlayer.playSound(sound: .ring) }
             return
         }
         

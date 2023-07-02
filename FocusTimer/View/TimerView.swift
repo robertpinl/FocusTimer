@@ -16,10 +16,21 @@ struct TimerView: View {
     
     var body: some View {
         VStack {
-            Text("Focus Timer")
-                .font(.caption)
-                .foregroundColor(.secondary)
-                .offset(y:-5)
+            ZStack {
+                Text("Focus Timer")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                    .offset(y:-5)
+                HStack {
+                    Spacer()
+                    Image(systemName: model.playSound == true ? "speaker" : "speaker.slash")
+                        .foregroundColor(.secondary)
+                        .offset(y:-5)
+                        .onTapGesture {
+                            model.playSound.toggle()
+                        }
+                }
+            }
             HStack(spacing: 10) {
                 Button("05:00") {
                     model.minutesRemaining = 5.0
